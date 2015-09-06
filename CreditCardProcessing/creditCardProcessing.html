@@ -21,8 +21,10 @@
                         <div ng-show="ccPaymentForm.ccNumber.$error.required && submitted" class="text-danger">Credit Card number is Required</div>
                     </div>
                 </div>
+	
                 <div class="row">
-                    <div class="col-lg-2">
+                	<br>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
                         <label for="cvv">Month</label>
                         <select class="form-control" ng-model="month">
                             <option value="Jan">Jan</option>
@@ -39,7 +41,8 @@
                             <option value="Dec">Dec</option>
                         </select>
                     </div>
-                    <div class="col-lg-1">
+                   
+                    <div class="col-sm-1 col-md-1 col-lg-1">
                         <label for="cvv">Year</label>
                         <select class="form-control" ng-model="year">
                             <option value="2015">2015</option>
@@ -49,13 +52,15 @@
                             <option value="2019">2019</option>
                         </select>
                     </div>
-                    <div class="col-lg-2">
+
+                    <div class="col-sm-2 col-md-2 col-lg-2">
                         <label for="cvv">CVV</label>
                         <input type="number" class="form-control" ng-model='cvv' id="cvv" name="cvv" placeholder="CVV" ng-minlength="3" ng-maxlength="3" required>
                         <span ng-show="(ccPaymentForm.cvv.$error.minlength || ccPaymentForm.cvv.$error.naxlength) && submitted" class="text-danger">Invalid CVV</span>
                         <span ng-show="ccPaymentForm.cvv.$error.required && submitted" class="text-danger">CVV is Required</span>
                     </div>
                 </div>
+                <br>
                 <button type="submit" class="btn-primary btn-lg pull-right">Submit</button>
             </form>
         </div>
