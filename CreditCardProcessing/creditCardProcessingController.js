@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($scope, ccService, $state) {
 
     if (ccService.getCcDetails() !== null) {
