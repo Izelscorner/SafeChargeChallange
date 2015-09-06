@@ -22,29 +22,34 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
         5: "fa fa-cc-mastercard",
         3: "fa fa-cc-amex",
         6: "fa fa-cc-discover",
+        0: "fa "
     };
     $scope.validateCreditCard = function() {
 
-        var ccCardString = $scope.ccNumber.toString()
-        var firstChar = parseInt(ccCardString.charAt(0));
+        if ($scope.ccNumber) {
+            var ccCardString = $scope.ccNumber.toString()
+            var firstChar = parseInt(ccCardString.charAt(0));
 
 
-        switch (firstChar) {
-            case 4: //Visa
-                ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
-                return validationMap[4];
-            case 5: //MasterCard
-                ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
-                return validationMap[5];
-            case 3:
-                ccCardString.length === 15 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
-                return validationMap[3];
-            case 6:
-                ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
-                return validationMap[6];
+
+            switch (firstChar) {
+                case 4: //Visa
+                    ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                    return validationMap[4];
+                case 5: //MasterCard
+                    ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                    return validationMap[5];
+                case 3:
+                    ccCardString.length === 15 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                    return validationMap[3];
+                case 6:
+                    ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                    return validationMap[6];
+            }
+
+        } else {
+            return validationMap[0];
         }
-
-
 
 
     };
