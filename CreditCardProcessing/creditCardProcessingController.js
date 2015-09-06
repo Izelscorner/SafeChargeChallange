@@ -21,8 +21,7 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
 
     var validationMap = {
         4: "fa fa-cc-visa",
-        5: "fa fa-cc-mastercard",
-        0: "fa fa-exclamation"
+        5: "fa fa-cc-mastercard"
     };
     $scope.validateCreditCard = function() {
         if ($scope.ccNumber != null && $scope.ccNumber > 0) {
@@ -40,11 +39,7 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
                     return validationMap[5];
                 default:
                     $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
-                    return validationMap[0];
-            }
-
-            if(ccCardString.length !== 16){
-            	$scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                    return '';
             }
 
         }

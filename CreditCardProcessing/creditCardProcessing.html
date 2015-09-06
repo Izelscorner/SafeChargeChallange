@@ -17,8 +17,8 @@
                             <input type="number" class="form-control" name='ccNumber' ng-model='ccNumber'  placeholder="Card Number" required ng-pattern="/^([0-9]){16}$/">
                             <span ng-class="validateCreditCard()" class="form-control-feedback" aria-hidden="true"></span>
                         </div>
-                        <span ng-show="ccPaymentForm.ccNumber.$error.pattern && submitted" class="text-danger">Credit Card Number is invalid</span>
-                        <span ng-show="ccPaymentForm.ccNumber.$error.required && submitted" class="text-danger">Credit Card number is Required</span>
+                        <div ng-show="(ccPaymentForm.ccNumber.$error.pattern || ccPaymentForm.ccNumber.$error.validCard) && submitted" class="text-danger">Credit Card Number is invalid</div>
+                        <div ng-show="ccPaymentForm.ccNumber.$error.required && submitted" class="text-danger">Credit Card number is Required</div>
                     </div>
                 </div>
                 <div class="row">
@@ -49,7 +49,7 @@
                             <option value="2019">2019</option>
                         </select>
                     </div>
-                    <div class="col-lg-1">
+                    <div class="col-lg-2">
                         <label for="cvv">CVV</label>
                         <input type="number" class="form-control" ng-model='cvv' id="cvv" name="cvv" placeholder="CVV" ng-minlength="3" ng-maxlength="3" required>
                         <span ng-show="(ccPaymentForm.cvv.$error.minlength || ccPaymentForm.cvv.$error.naxlength) && submitted" class="text-danger">Invalid CVV</span>
