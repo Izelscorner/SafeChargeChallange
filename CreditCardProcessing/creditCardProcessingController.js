@@ -39,10 +39,10 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
                 case 5: //MasterCard
                     ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
                     return validationMap[5];
-                case 3:
+                case 3: //Amex
                     ccCardString.length === 15 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
                     return validationMap[3];
-                case 6:
+                case 6: //Discovery
                     ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
                     return validationMap[6];
             }
