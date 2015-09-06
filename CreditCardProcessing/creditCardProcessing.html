@@ -1,12 +1,12 @@
 <div class="container">
     <div class="panel panel-success">
-        <div class="panel-heading">Credit Card Payment</div>
+        <div class="panel-heading"><h3>Credit Card Payment</h3></div>
         <div class="panel-body">
             <form name='ccPaymentForm' ng-submit='processCreditCard(ccPaymentForm)' novalidate=''>
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <label for="fullName">Name on Card</label>
-                        <input type="text" ng-model="fullName" class="form-control" id="fullName" name="fullName" required placeholder="Name on Card">
+                        <input type="text" ng-model="fullName" class="form-control input-lg" id="fullName" name="fullName" required placeholder="Name on Card">
                         <span ng-show="ccPaymentForm.fullName.$error.required && submitted" class="text-danger">Name on Card is required.</span>
                     </div>
                 </div>
@@ -14,7 +14,7 @@
                     <div class="form-group col-sm-10 col-md-10 col-lg-10">
                         <label for="ccNumber">Card Number</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" name='ccNumber' ng-model='ccNumber' placeholder="Card Number" required>
+                            <input type="number" class="form-control input-lg" name='ccNumber' ng-model='ccNumber' placeholder="Card Number" required>
                             <span ng-class="validateCreditCard()" class="form-control-feedback" aria-hidden="true"></span>
                         </div>
                         <div ng-show="ccPaymentForm.ccNumber.$error.validCard && submitted" class="text-danger">Credit Card Number is invalid</div>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <label for="cvv">CVV</label>
-                        <input type="number" class="form-control" ng-model='cvv' id="cvv" name="cvv" placeholder="CVV" ng-pattern="/^([0-9]){3}$/" required>
+                        <input type="number" class="form-control input-lg" ng-model='cvv' id="cvv" name="cvv" placeholder="CVV" ng-pattern="/^([0-9]){3}$/" required>
                         <span ng-show="ccPaymentForm.cvv.$error.pattern && submitted" class="text-danger">Invalid CVV</span>
                         <span ng-show="ccPaymentForm.cvv.$error.required && submitted" class="text-danger">CVV is Required</span>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <label for="cvv">Month</label>
-                        <select class="form-control" ng-model="month">
+                        <select class="form-control input-lg" ng-model="month">
                             <option value="Jan">Jan</option>
                             <option value="Feb">Feb</option>
                             <option value="Mar">Mar</option>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <label for="cvv">Year</label>
-                        <select class="form-control" ng-model="year">
+                        <select class="form-control input-lg" ng-model="year">
                             <option value="2015">2015</option>
                             <option value="2016">2016</option>
                             <option value="2017">2017</option>
