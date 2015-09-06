@@ -30,8 +30,10 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
 
             switch (firstChar) {
                 case 4:
+                    $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true);
                     return validationMap[4];
                 case 5:
+                    $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true);
                     return validationMap[5];
                 default:
                     $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
@@ -60,28 +62,4 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
 
 });
 
-// angular.module('ccProcessing').directive('validCreditCard', function() {
-//     return {
-//         require: 'ngModel',
-//         link: function(scope, elm, attrs, ctrl) {
-//             ctrl.$validators.validCreditCard = function(modelValue, viewValue) {
-//                 var isnum = /^\d+$/.test(viewValue);
 
-//                 if (!isnum) {
-//                     return false;
-//                 }
-//                 if (ctrl.$isEmpty(modelValue)) {
-//                     return false;
-//                 }
-//                 if (viewValue.length != 16) {
-//                     return false;
-//                 } else {
-//                     if (viewValue.charAt(0) == 4 || viewValue.charAt(0) == 5)
-//                         return true;
-//                 }
-//                 // it is invalid
-//                 return false;
-//             };
-//         }
-//     };
-// });

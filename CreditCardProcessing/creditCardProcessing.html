@@ -17,7 +17,7 @@
                             <input type="text" class="form-control" name='ccNumber' ng-model='ccNumber'  placeholder="Card Number" required ng-minlength="16" ng-maxlength="16">
                             <span ng-class="validateCreditCard()" class="form-control-feedback" aria-hidden="true"></span>
                         </div>
-                        <span ng-show="(ccPaymentForm.ccNumber.$error.minlength || ccPaymentForm.ccNumber.$error.naxlength) && submitted" class="text-danger">Credit Card Number is invalid</span>
+                        <span ng-show="(ccPaymentForm.ccNumber.$error.minlength || ccPaymentForm.ccNumber.$error.naxlength || ccPaymentForm.ccNumber.$error.validCard) && submitted" class="text-danger">Credit Card Number is invalid</span>
                         <span ng-show="ccPaymentForm.ccNumber.$error.required && submitted">Credit Card number is Required</span>
                     </div>
                 </div>
