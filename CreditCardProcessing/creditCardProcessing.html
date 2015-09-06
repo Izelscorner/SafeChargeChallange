@@ -55,8 +55,8 @@
 
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <label for="cvv">CVV</label>
-                        <input type="number" class="form-control" ng-model='cvv' id="cvv" name="cvv" placeholder="CVV" ng-minlength="3" ng-maxlength="3" required>
-                        <span ng-show="(ccPaymentForm.cvv.$error.minlength || ccPaymentForm.cvv.$error.naxlength) && submitted" class="text-danger">Invalid CVV</span>
+                        <input type="number" class="form-control" ng-model='cvv' id="cvv" name="cvv" placeholder="CVV" ng-pattern="/^([0-9]){3}$/" required>
+                        <span ng-show="ccPaymentForm.cvv.$error.pattern && submitted" class="text-danger">Invalid CVV</span>
                         <span ng-show="ccPaymentForm.cvv.$error.required && submitted" class="text-danger">CVV is Required</span>
                     </div>
                 </div>
