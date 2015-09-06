@@ -25,8 +25,11 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
         0: "fa fa-exclamation"
     };
     $scope.validateCreditCard = function() {
-        if ($scope.ccNumber != null && $scope.ccNumber.length > 0) {
-            var firstChar = parseInt($scope.ccNumber.charAt(0));
+        if ($scope.ccNumber != null && $scope.ccNumber > 0) {
+        	var ccCardString = $scope.ccNumber.toString()
+            var firstChar = parseInt(ccCardString.charAt(0));
+
+
 
             switch (firstChar) {
                 case 4:
@@ -38,6 +41,10 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
                 default:
                     $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
                     return validationMap[0];
+            }
+
+            if(ccCardString.length !== 16){
+            	$scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
             }
 
         }

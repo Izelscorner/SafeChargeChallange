@@ -2,23 +2,23 @@
     <div class="panel panel-success">
         <div class="panel-heading">Credit Card Payment</div>
         <div class="panel-body">
-            <form name='ccPaymentForm' ng-submit='processCreditCard(ccPaymentForm)' novalidte>
+            <form name='ccPaymentForm' ng-submit='processCreditCard(ccPaymentForm)' novalidate=''>
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <label for="fullName">Name on Card</label>
-                        <input type="text" ng-model="fullName" class="form-control" id="fullName" required placeholder="Name on Card">
-                        <span ng-show="ccPaymentForm.fullName.$error.required && submitted">Name on Card is required.</span>
+                        <input type="text" ng-model="fullName" class="form-control" id="fullName" name="fullName" required placeholder="Name on Card">
+                        <span ng-show="ccPaymentForm.fullName.$error.required && submitted" class="text-danger">Name on Card is required.</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-12">
                         <label for="ccNumber">Card Number</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" name='ccNumber' ng-model='ccNumber'  placeholder="Card Number" required ng-minlength="16" ng-maxlength="16">
+                            <input type="number" class="form-control" name='ccNumber' ng-model='ccNumber'  placeholder="Card Number" required ng-pattern="/^([0-9]){16}$/">
                             <span ng-class="validateCreditCard()" class="form-control-feedback" aria-hidden="true"></span>
                         </div>
-                        <span ng-show="(ccPaymentForm.ccNumber.$error.minlength || ccPaymentForm.ccNumber.$error.naxlength || ccPaymentForm.ccNumber.$error.validCard) && submitted" class="text-danger">Credit Card Number is invalid</span>
-                        <span ng-show="ccPaymentForm.ccNumber.$error.required && submitted">Credit Card number is Required</span>
+                        <span ng-show="ccPaymentForm.ccNumber.$error.pattern && submitted" class="text-danger">Credit Card Number is invalid</span>
+                        <span ng-show="ccPaymentForm.ccNumber.$error.required && submitted" class="text-danger">Credit Card number is Required</span>
                     </div>
                 </div>
                 <div class="row">
@@ -53,7 +53,7 @@
                         <label for="cvv">CVV</label>
                         <input type="number" class="form-control" ng-model='cvv' id="cvv" name="cvv" placeholder="CVV" ng-minlength="3" ng-maxlength="3" required>
                         <span ng-show="(ccPaymentForm.cvv.$error.minlength || ccPaymentForm.cvv.$error.naxlength) && submitted" class="text-danger">Invalid CVV</span>
-                        <span ng-show="ccPaymentForm.cvv.$error.required && submitted">CVV is Required</span>
+                        <span ng-show="ccPaymentForm.cvv.$error.required && submitted" class="text-danger">CVV is Required</span>
                     </div>
                 </div>
                 <button type="submit" class="btn-primary btn-default pull-right">Submit</button>
