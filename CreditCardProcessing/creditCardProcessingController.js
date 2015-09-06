@@ -21,26 +21,34 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
 
     var validationMap = {
         4: "fa fa-cc-visa",
-        5: "fa fa-cc-mastercard"
+        5: "fa fa-cc-mastercard",
+        3: "fa fa-cc-amex",
+        6: "fa fa-cc-discover",
     };
     $scope.validateCreditCard = function() {
-    	$scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
-        if ($scope.ccNumber != null && $scope.ccNumber > 0) {
-        	var ccCardString = $scope.ccNumber.toString()
-            var firstChar = parseInt(ccCardString.charAt(0));
+
+        var ccCardString = $scope.ccNumber.toString()
+        var firstChar = parseInt(ccCardString.charAt(0));
 
 
-
-            switch (firstChar) {
-                case 4:
-                    $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true);
-                    return validationMap[4];
-                case 5:
-                    $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true);
-                    return validationMap[5];
-            }
-
+        switch (firstChar) {
+            case 4: //Visa
+                ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                return validationMap[4];
+            case 5: //MasterCard
+                ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                return validationMap[5];
+            case 3:
+                ccCardString.length === 15 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                return validationMap[3];
+            case 6:
+                ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                return validationMap[6];
         }
+
+
+
+
     };
     $scope.submitted = false;
     $scope.processCreditCard = function(form) {
@@ -61,5 +69,3 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
     };
 
 });
-
-

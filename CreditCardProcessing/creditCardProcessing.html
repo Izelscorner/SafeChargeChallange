@@ -14,10 +14,10 @@
                     <div class="form-group col-lg-12">
                         <label for="ccNumber">Card Number</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" name='ccNumber' ng-model='ccNumber'  placeholder="Card Number" required ng-pattern="/^([0-9]){16}$/">
+                            <input type="number" class="form-control" name='ccNumber' ng-model='ccNumber'  placeholder="Card Number" required >
                             <span ng-class="validateCreditCard()" class="form-control-feedback" aria-hidden="true"></span>
                         </div>
-                        <div ng-show="(ccPaymentForm.ccNumber.$error.pattern || ccPaymentForm.ccNumber.$error.validCard) && submitted" class="text-danger">Credit Card Number is invalid</div>
+                        <div ng-show="ccPaymentForm.ccNumber.$error.validCard && submitted" class="text-danger">Credit Card Number is invalid</div>
                         <div ng-show="ccPaymentForm.ccNumber.$error.required && submitted" class="text-danger">Credit Card number is Required</div>
                     </div>
                 </div>
