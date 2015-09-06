@@ -14,7 +14,7 @@
                     <div class="form-group col-lg-12">
                         <label for="ccNumber">Card Number</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" name='ccNumber' ng-model='ccNumber'  placeholder="Card Number" required ng-minlength="16" ng-maxlength="16">
+                            <input type="number" class="form-control" name='ccNumber' ng-model='ccNumber'  placeholder="Card Number" required ng-minlength="16" ng-maxlength="16">
                             <span ng-class="validateCreditCard()" class="form-control-feedback" aria-hidden="true"></span>
                         </div>
                         <span ng-show="(ccPaymentForm.ccNumber.$error.minlength || ccPaymentForm.ccNumber.$error.naxlength || ccPaymentForm.ccNumber.$error.validCard) && submitted" class="text-danger">Credit Card Number is invalid</span>
