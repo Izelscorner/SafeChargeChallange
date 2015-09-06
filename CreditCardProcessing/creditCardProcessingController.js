@@ -29,7 +29,7 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
         if ($scope.ccNumber) {
             var ccCardString = $scope.ccNumber.toString()
             var firstChar = parseInt(ccCardString.charAt(0));
-
+            var secondChar = parseInt(ccCardString.charAt(1));
 
 
             switch (firstChar) {
@@ -40,8 +40,13 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
                     ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
                     return validationMap[5];
                 case 3: //Amex
-                    ccCardString.length === 15 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
-                    return validationMap[3];
+                    if (secondChar === 4 || secondChar=== 7) {
+                        ccCardString.length === 15 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                        return validationMap[3];
+                    }else{
+                    	$scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
+                    	return validationMap[0];
+                    }
                 case 6: //Discovery
                     ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
                     return validationMap[6];
