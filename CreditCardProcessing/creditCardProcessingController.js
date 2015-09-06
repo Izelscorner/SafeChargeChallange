@@ -50,6 +50,9 @@ angular.module('ccProcessing').controller('creditCardProcessingCtrl', function($
                 case 6: //Discovery
                     ccCardString.length === 16 ? $scope.ccPaymentForm.ccNumber.$setValidity("validCard", true) : $scope.ccPaymentForm.ccNumber.$setValidity("validCard", false);
                     return validationMap[6];
+                default:
+                	$scope.ccPaymentForm.ccNumber.$setValidity("validCard", false); 
+                	return validationMap[0];
             }
 
         } else {
